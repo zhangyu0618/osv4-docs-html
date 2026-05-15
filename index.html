@@ -110,7 +110,7 @@
         }
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 18px;
             margin-top: 8px;
         }
@@ -175,9 +175,7 @@
             .container { padding: 20px 14px 28px; }
             header { padding: 28px 20px 24px; border-radius: 18px; }
             h1 { font-size: 32px; }
-            .menu-grid { grid-template-columns: repeat(2, 1fr); }
-            .sub-menu.two-column { column-count: 1; }
-        
+            .menu-grid { grid-template-columns: 1fr; }
             .sub-menu.two-column { column-count: 1; }
         }
     </style>
@@ -194,126 +192,122 @@
         <h2 class="section-title">模块导航</h2>
         <div class="menu-grid">
             <div class="menu-card">
-                <h3><a href="系统概览.html">系统概览</a></h3>
+                <h3><a href="system-overview.html">系统概览</a></h3>
                 <div class="sub-menu">
-                    <div class="sub-item"><a href="系统概览.html">系统概览</a></div>
+                    <div class="sub-item"><a href="system-overview.html">系统概览</a></div>
                 </div>
             </div>
 
             <div class="menu-card">
-                <h3><a href="监控中心.html">监控中心</a></h3>
+                <h3><a href="monitor-center.html">监控中心</a></h3>
                 <div class="sub-menu two-column">
-                    <div class="sub-item"><a href="监控中心/线路监控.html">线路监控</a></div>
-                    <div class="sub-item"><a href="监控中心/无线监控.html">无线监控</a></div>
-                    <div class="sub-item"><a href="监控中心/终端监控.html">终端监控</a></div>
-                    <div class="sub-item"><a href="监控中心/行为洞察.html">行为洞察</a></div>
-                    <div class="sub-item"><a href="监控中心/策略监控.html">策略监控</a></div>
-                    <div class="sub-item"><a href="监控中心/负载监控.html">负载监控</a></div>
-                    <div class="sub-item"><a href="监控中心/分流监控.html">分流监控</a></div>
-                    <div class="sub-item"><a href="监控中心/下联设备.html">下联设备</a></div>
+                    <div class="sub-item"><a href="monitor-center/line-monitor.html">线路监控</a></div>
+                    <div class="sub-item"><a href="monitor-center/wireless-monitor.html">无线监控</a></div>
+                    <div class="sub-item"><a href="monitor-center/terminal-monitor.html">终端监控</a></div>
+                    <div class="sub-item"><a href="monitor-center/behavior-insight.html">行为洞察</a></div>
+                    <div class="sub-item"><a href="monitor-center/policy-monitor.html">策略监控</a></div>
+                    <div class="sub-item"><a href="monitor-center/load-monitor.html">负载监控</a></div>
+                    <div class="sub-item"><a href="monitor-center/traffic-split-monitor.html">分流监控</a></div>
+                    <div class="sub-item"><a href="monitor-center/downlink-devices.html">下联设备</a></div>
                 </div>
             </div>
 
             <div class="menu-card">
-                <h3><a href="网络配置.html">网络配置</a></h3>
+                <h3><a href="network-config.html">网络配置</a></h3>
                 <div class="sub-menu two-column">
-                    <div class="sub-item"><a href="网络配置/内外网设置.html">内外网设置</a></div>
-                    <div class="sub-item"><a href="网络配置/VLAN 设置.html">VLAN 设置</a></div>
-                    <div class="sub-item"><a href="网络配置/智能流控.html">智能流控</a></div>
-                    <div class="sub-item"><a href="网络配置/终端限速.html">终端限速</a></div>
-                    <div class="sub-item"><a href="网络配置/分流策略.html">分流策略</a></div>
-                    <div class="sub-item"><a href="网络配置/静态路由.html">静态路由</a></div>
-                    <div class="sub-item"><a href="网络配置/跨三层服务.html">跨三层服务</a></div>
-                    <div class="sub-item"><a href="网络配置/路由对象.html">路由对象</a></div>
-                    <div class="sub-item"><a href="网络配置/自定义协议.html">自定义协议</a></div>
-                    <div class="sub-item"><a href="网络配置/组播管理.html">组播管理</a></div>
-                    <div class="sub-item"><a href="网络配置/DHCP 服务.html">DHCP 服务</a></div>
-                    <div class="sub-item"><a href="网络配置/DNS 服务.html">DNS 服务</a></div>
-                    <div class="sub-item"><a href="网络配置/SD-WAN.html">SD-WAN</a></div>
-                    <div class="sub-item"><a href="网络配置/UPnP_NAT.html">UPnP/NAT</a></div>
+                    <div class="sub-item"><a href="network-config/lan-wan-settings.html">内外网设置</a></div>
+                    <div class="sub-item"><a href="network-config/vlan-settings.html">VLAN 设置</a></div>
+                    <div class="sub-item"><a href="network-config/smart-qos.html">智能流控</a></div>
+                    <div class="sub-item"><a href="network-config/terminal-rate-limit.html">终端限速</a></div>
+                    <div class="sub-item"><a href="network-config/traffic-policy.html">分流策略</a></div>
+                    <div class="sub-item"><a href="network-config/static-routing.html">静态路由</a></div>
+                    <div class="sub-item"><a href="network-config/cross-l3-service.html">跨三层服务</a></div>
+                    <div class="sub-item"><a href="network-config/routing-objects.html">路由对象</a></div>
+                    <div class="sub-item"><a href="network-config/custom-protocol.html">自定义协议</a></div>
+                    <div class="sub-item"><a href="network-config/multicast-management.html">组播管理</a></div>
+                    <div class="sub-item"><a href="network-config/dhcp-service.html">DHCP 服务</a></div>
+                    <div class="sub-item"><a href="network-config/dns-service.html">DNS 服务</a></div>
+                    <div class="sub-item"><a href="network-config/sd-wan.html">SD-WAN</a></div>
+                    <div class="sub-item"><a href="network-config/upnp-nat.html">UPnP/NAT</a></div>
                 </div>
             </div>
 
             <div class="menu-card">
-                <h3><a href="无线服务.html">无线服务</a></h3>
+                <h3><a href="wireless-service.html">无线服务</a></h3>
                 <div class="sub-menu">
-                    <div class="sub-item"><a href="无线服务/AP管理.html">AP管理</a></div>
-                    <div class="sub-item"><a href="无线服务/终端VLAN.html">终端VLAN</a></div>
-                    <div class="sub-item"><a href="无线服务/黑白名单.html">黑白名单</a></div>
-                    <div class="sub-item"><a href="无线服务/无线网优.html">无线网优</a></div>
+                    <div class="sub-item"><a href="wireless-service/ap-management.html">AP管理</a></div>
+                    <div class="sub-item"><a href="wireless-service/terminal-vlan.html">终端VLAN</a></div>
+                    <div class="sub-item"><a href="wireless-service/blacklist-whitelist.html">黑白名单</a></div>
+                    <div class="sub-item"><a href="wireless-service/wireless-optimization.html">无线网优</a></div>
                 </div>
             </div>
 
             <div class="menu-card">
-                <h3><a href="安全中心.html">安全中心</a></h3>
+                <h3><a href="security-center.html">安全中心</a></h3>
                 <div class="sub-menu two-column">
-                    <div class="sub-item"><a href="安全中心/ACL 规则.html">ACL 规则</a></div>
-                    <div class="sub-item"><a href="安全中心/连接数限制.html">连接数限制</a></div>
-                    <div class="sub-item"><a href="安全中心/云防火墙.html">云防火墙</a></div>
-                    <div class="sub-item"><a href="安全中心/威胁情报库.html">威胁情报库</a></div>
-                    <div class="sub-item"><a href="安全中心/ARP 设置.html">ARP 设置</a></div>
-                    <div class="sub-item"><a href="安全中心/MAC 访问控制.html">MAC 访问控制</a></div>
-                    <div class="sub-item"><a href="安全中心/网址浏览控制.html">网址浏览控制</a></div>
-                    <div class="sub-item"><a href="安全中心/URL 控制.html">URL 控制</a></div>
-                    <div class="sub-item"><a href="安全中心/应用协议控制.html">应用协议控制</a></div>
-                    <div class="sub-item"><a href="安全中心/其他控制.html">其他控制</a></div>
-                    <div class="sub-item"><a href="安全中心/行为记录.html">行为记录</a></div>
-                    <div class="sub-item"><a href="安全中心/流量审计.html">流量审计</a></div>
-                    <div class="sub-item"><a href="安全中心/终端名称管理.html">终端名称管理</a></div>
-                    <div class="sub-item"><a href="安全中心/高级设置.html">高级设置</a></div>
+                    <div class="sub-item"><a href="security-center/acl-rules.html">ACL 规则</a></div>
+                    <div class="sub-item"><a href="security-center/connection-limit.html">连接数限制</a></div>
+                    <div class="sub-item"><a href="security-center/cloud-firewall.html">云防火墙</a></div>
+                    <div class="sub-item"><a href="security-center/threat-intelligence.html">威胁情报库</a></div>
+                    <div class="sub-item"><a href="security-center/arp-settings.html">ARP 设置</a></div>
+                    <div class="sub-item"><a href="security-center/mac-access-control.html">MAC 访问控制</a></div>
+                    <div class="sub-item"><a href="security-center/web-browsing-control.html">网址浏览控制</a></div>
+                    <div class="sub-item"><a href="security-center/url-control.html">URL 控制</a></div>
+                    <div class="sub-item"><a href="security-center/application-protocol-control.html">应用协议控制</a></div>
+                    <div class="sub-item"><a href="security-center/other-controls.html">其他控制</a></div>
+                    <div class="sub-item"><a href="security-center/behavior-records.html">行为记录</a></div>
+                    <div class="sub-item"><a href="security-center/traffic-audit.html">流量审计</a></div>
+                    <div class="sub-item"><a href="security-center/terminal-name-management.html">终端名称管理</a></div>
+                    <div class="sub-item"><a href="security-center/advanced-settings.html">高级设置</a></div>
                 </div>
             </div>
 
             <div class="menu-card">
-                <h3><a href="认证服务.html">认证服务</a></h3>
+                <h3><a href="authentication-service.html">认证服务</a></h3>
                 <div class="sub-menu">
-                    <div class="sub-item"><a href="认证服务/账号在线用户.html">账号在线用户</a></div>
-                    <div class="sub-item"><a href="认证服务/WEB 认证服务.html">WEB 认证服务</a></div>
-                    <div class="sub-item"><a href="认证服务/VPN 服务.html">VPN 服务</a></div>
-                    <div class="sub-item"><a href="认证服务/认证账号管理.html">认证账号管理</a></div>
-                    <div class="sub-item"><a href="认证服务/代拨服务管理.html">代拨服务管理</a></div>
-                    <div class="sub-item"><a href="认证服务/通知推送.html">通知推送</a></div>
+                    <div class="sub-item"><a href="authentication-service/online-users.html">账号在线用户</a></div>
+                    <div class="sub-item"><a href="authentication-service/web-authentication-service.html">WEB 认证服务</a></div>
+                    <div class="sub-item"><a href="authentication-service/vpn-service.html">VPN 服务</a></div>
+                    <div class="sub-item"><a href="authentication-service/authentication-account-management.html">认证账号管理</a></div>
+                    <div class="sub-item"><a href="authentication-service/delegated-dialing-management.html">代拨服务管理</a></div>
+                    <div class="sub-item"><a href="authentication-service/notification-push.html">通知推送</a></div>
                 </div>
             </div>
 
             <div class="menu-card">
-                <h3><a href="高级服务.html">高级服务</a></h3>
+                <h3><a href="advanced-service.html">高级服务</a></h3>
                 <div class="sub-menu">
-                    <div class="sub-item"><a href="高级服务/本地服务.html">本地服务</a></div>
-                    <div class="sub-item"><a href="高级服务/内网穿透.html">内网穿透</a></div>
-                    <div class="sub-item"><a href="高级服务/工具包.html">工具包</a></div>
-                    <div class="sub-item"><a href="高级服务/应用市场.html">应用市场</a></div>
-                    <div class="sub-item"><a href="高级服务/Docker.html">Docker</a></div>
-                    <div class="sub-item"><a href="高级服务/虚拟机.html">虚拟机</a></div>
+                    <div class="sub-item"><a href="advanced-service/local-service.html">本地服务</a></div>
+                    <div class="sub-item"><a href="advanced-service/intranet-penetration.html">内网穿透</a></div>
+                    <div class="sub-item"><a href="advanced-service/toolkit.html">工具包</a></div>
+                    <div class="sub-item"><a href="advanced-service/application-market.html">应用市场</a></div>
+                    <div class="sub-item"><a href="advanced-service/docker.html">Docker</a></div>
+                    <div class="sub-item"><a href="advanced-service/virtual-machine.html">虚拟机</a></div>
                 </div>
             </div>
 
-            </div>
-
-            </div>
-
             <div class="menu-card">
-                <h3><a href="日志中心.html">日志中心</a></h3>
+                <h3><a href="log-center.html">日志中心</a></h3>
                 <div class="sub-menu">
-                    <div class="sub-item"><a href="日志中心/用户日志.html">用户日志</a></div>
-                    <div class="sub-item"><a href="日志中心/功能日志.html">功能日志</a></div>
-                    <div class="sub-item"><a href="日志中心/系统日志.html">系统日志</a></div>
-                    <div class="sub-item"><a href="日志中心/消息通知.html">消息通知</a></div>
-                    <div class="sub-item"><a href="日志中心/告警信息.html">告警信息</a></div>
+                    <div class="sub-item"><a href="log-center/user-logs.html">用户日志</a></div>
+                    <div class="sub-item"><a href="log-center/feature-logs.html">功能日志</a></div>
+                    <div class="sub-item"><a href="log-center/system-logs.html">系统日志</a></div>
+                    <div class="sub-item"><a href="log-center/message-notifications.html">消息通知</a></div>
+                    <div class="sub-item"><a href="log-center/alert-info.html">告警信息</a></div>
                 </div>
             </div>
 
             <div class="menu-card">
-                <h3><a href="设备设置.html">设备设置</a></h3>
+                <h3><a href="device-settings.html">设备设置</a></h3>
                 <div class="sub-menu two-column">
-                    <div class="sub-item"><a href="设备设置/基础设置.html">基础设置</a></div>
-                    <div class="sub-item"><a href="设备设置/双机热备.html">双机热备</a></div>
-                    <div class="sub-item"><a href="设备设置/磁盘管理.html">磁盘管理</a></div>
-                    <div class="sub-item"><a href="设备设置/升级备份.html">升级备份</a></div>
-                    <div class="sub-item"><a href="设备设置/重启计划.html">重启计划</a></div>
-                    <div class="sub-item"><a href="设备设置/云服务绑定.html">云服务绑定</a></div>
-                    <div class="sub-item"><a href="设备设置/登录管理.html">登录管理</a></div>
-                    <div class="sub-item"><a href="设备设置/高级管理.html">高级管理</a></div>
+                    <div class="sub-item"><a href="device-settings/basic-settings.html">基础设置</a></div>
+                    <div class="sub-item"><a href="device-settings/ha-hot-standby.html">双机热备</a></div>
+                    <div class="sub-item"><a href="device-settings/disk-management.html">磁盘管理</a></div>
+                    <div class="sub-item"><a href="device-settings/upgrade-backup.html">升级备份</a></div>
+                    <div class="sub-item"><a href="device-settings/reboot-schedule.html">重启计划</a></div>
+                    <div class="sub-item"><a href="device-settings/cloud-service-binding.html">云服务绑定</a></div>
+                    <div class="sub-item"><a href="device-settings/login-management.html">登录管理</a></div>
+                    <div class="sub-item"><a href="device-settings/advanced-management.html">高级管理</a></div>
                 </div>
             </div>
         </div>
