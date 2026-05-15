@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web管理界面指南</title>
+    <style>
+        :root {
+            --bg: #f4f8ff;
+            --panel: rgba(255,255,255,0.92);
+            --card: #ffffff;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --line: #e5e7eb;
+            --blue: #2563eb;
+            --blue2: #60a5fa;
+            --shadow: 0 18px 42px rgba(86, 136, 191, 0.16);
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            color: var(--text);
+            background: linear-gradient(180deg, #f8fbff 0%, #eef6ff 48%, #f8fbff 100%);
+        }
+        .container {
+            max-width: 1480px;
+            margin: 0 auto;
+            padding: 32px 24px 40px;
+        }
+        header {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(255,255,255,.96) 0%, rgba(239,246,255,.95) 100%);
+            border: 1px solid rgba(255,255,255,.9);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            padding: 42px 36px 32px;
+            margin-bottom: 28px;
+        }
+        .hero-glow {
+            position: absolute;
+            inset: auto -80px -80px auto;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(96,165,250,.24) 0%, rgba(96,165,250,0) 70%);
+            pointer-events: none;
+        }
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 14px;
+            border-radius: 999px;
+            background: rgba(37,99,235,.08);
+            color: var(--blue);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: .4px;
+        }
+        .eyebrow::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: linear-gradient(180deg, #60a5fa, #2563eb);
+            box-shadow: 0 0 0 4px rgba(96,165,250,.18);
+        }
+        h1 {
+            margin: 18px 0 14px;
+            font-size: 44px;
+            line-height: 1.18;
+            color: #0f172a;
+        }
+        .lead {
+            max-width: 900px;
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.9;
+            color: #475569;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin: 24px 0 8px;
+        }
+        .stat {
+            background: rgba(255,255,255,.82);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 18px 18px 16px;
+            box-shadow: 0 10px 24px rgba(148,163,184,.10);
+        }
+        .stat-number {
+            font-size: 30px;
+            line-height: 1;
+            color: var(--blue);
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            color: var(--muted);
+            font-size: 14px;
+        }
+        .section-title {
+            margin: 18px 0 14px;
+            font-size: 22px;
+            color: #0f172a;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 18px;
+            margin-top: 8px;
+        }
+        .menu-card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            padding: 22px 20px 18px;
+            border-radius: 18px;
+            box-shadow: 0 12px 28px rgba(148,163,184,.12);
+            transition: transform .16s ease, box-shadow .16s ease;
+        }
+        .menu-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 36px rgba(86,136,191,.18);
+        }
+        .menu-card h3 {
+            margin: 0 0 14px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(37,99,235,.18);
+            font-size: 20px;
+        }
+        .menu-card h3 a {
+            color: #1e3a8a;
+            text-decoration: none;
+        }
+        .menu-card h3 a:hover,
+        .sub-item a:hover { color: var(--blue); }
+        .sub-menu {
+            margin-top: 8px;
+            padding-left: 0;
+        }
+        .sub-menu.two-column {
+            column-count: 2;
+            column-gap: 22px;
+        }
+        .sub-menu.two-column .sub-item { break-inside: avoid; }
+        .sub-item {
+            padding: 6px 0;
+            list-style: none;
+        }
+        .sub-item a {
+            color: #475569;
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .empty-card {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
+            padding-top: 4px;
+        }
+        footer {
+            margin-top: 28px;
+            text-align: center;
+            color: #64748b;
+            font-size: 13px;
+            line-height: 1.9;
+            padding: 8px 0 0;
+        }
+        @media (max-width: 900px) {
+            .container { padding: 20px 14px 28px; }
+            header { padding: 28px 20px 24px; border-radius: 18px; }
+            h1 { font-size: 32px; }
+            .menu-grid { grid-template-columns: 1fr; }
+            .sub-menu.two-column { column-count: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="hero-glow"></div>
+            <div class="eyebrow">OSV4 DOCUMENT PORTAL</div>
+            <h1>iKuai OSv4 Web管理界面使用指南</h1>
+            <p class="lead">本页面用于集中展示 OpenClaw 已整理的 OSv4 Web 管理界面文档入口。可从一级模块快速进入，再继续查看对应子页面的详细使用说明。</p>
+        </header>
+
+        <h2 class="section-title">模块导航</h2>
+        <div class="menu-grid">
+            <div class="menu-card">
+                <h3><a href="系统概览.html">系统概览</a></h3>
+                <div class="sub-menu">
+                    <div class="sub-item"><a href="系统概览.html">系统概览</a></div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <h3><a href="监控中心.html">监控中心</a></h3>
+                <div class="sub-menu two-column">
+                    <div class="sub-item"><a href="监控中心/线路监控.html">线路监控</a></div>
+                    <div class="sub-item"><a href="监控中心/无线监控.html">无线监控</a></div>
+                    <div class="sub-item"><a href="监控中心/终端监控.html">终端监控</a></div>
+                    <div class="sub-item"><a href="监控中心/行为洞察.html">行为洞察</a></div>
+                    <div class="sub-item"><a href="监控中心/策略监控.html">策略监控</a></div>
+                    <div class="sub-item"><a href="监控中心/负载监控.html">负载监控</a></div>
+                    <div class="sub-item"><a href="监控中心/分流监控.html">分流监控</a></div>
+                    <div class="sub-item"><a href="监控中心/下联设备.html">下联设备</a></div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <h3><a href="网络配置.html">网络配置</a></h3>
+                <div class="sub-menu two-column">
+                    <div class="sub-item"><a href="网络配置/内外网设置.html">内外网设置</a></div>
+                    <div class="sub-item"><a href="网络配置/VLAN 设置.html">VLAN 设置</a></div>
+                    <div class="sub-item"><a href="网络配置/智能流控.html">智能流控</a></div>
+                    <div class="sub-item"><a href="网络配置/终端限速.html">终端限速</a></div>
+                    <div class="sub-item"><a href="网络配置/分流策略.html">分流策略</a></div>
+                    <div class="sub-item"><a href="网络配置/静态路由.html">静态路由</a></div>
+                    <div class="sub-item"><a href="网络配置/跨三层服务.html">跨三层服务</a></div>
+                    <div class="sub-item"><a href="网络配置/路由对象.html">路由对象</a></div>
+                    <div class="sub-item"><a href="网络配置/自定义协议.html">自定义协议</a></div>
+                    <div class="sub-item"><a href="网络配置/组播管理.html">组播管理</a></div>
+                    <div class="sub-item"><a href="网络配置/DHCP 服务.html">DHCP 服务</a></div>
+                    <div class="sub-item"><a href="网络配置/DNS 服务.html">DNS 服务</a></div>
+                    <div class="sub-item"><a href="网络配置/SD-WAN.html">SD-WAN</a></div>
+                    <div class="sub-item"><a href="网络配置/UPnP_NAT.html">UPnP/NAT</a></div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <h3><a href="无线服务.html">无线服务</a></h3>
+                <div class="sub-menu">
+                    <div class="sub-item"><a href="无线服务/AP管理.html">AP管理</a></div>
+                    <div class="sub-item"><a href="无线服务/终端VLAN.html">终端VLAN</a></div>
+                    <div class="sub-item"><a href="无线服务/黑白名单.html">黑白名单</a></div>
+                    <div class="sub-item"><a href="无线服务/无线网优.html">无线网优</a></div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <h3><a href="安全中心.html">安全中心</a></h3>
+                <div class="sub-menu two-column">
+                    <div class="sub-item"><a href="安全中心/ACL 规则.html">ACL 规则</a></div>
+                    <div class="sub-item"><a href="安全中心/连接数限制.html">连接数限制</a></div>
+                    <div class="sub-item"><a href="安全中心/云防火墙.html">云防火墙</a></div>
+                    <div class="sub-item"><a href="安全中心/威胁情报库.html">威胁情报库</a></div>
+                    <div class="sub-item"><a href="安全中心/ARP 设置.html">ARP 设置</a></div>
+                    <div class="sub-item"><a href="安全中心/MAC 访问控制.html">MAC 访问控制</a></div>
+                    <div class="sub-item"><a href="安全中心/网址浏览控制.html">网址浏览控制</a></div>
+                    <div class="sub-item"><a href="安全中心/URL 控制.html">URL 控制</a></div>
+                    <div class="sub-item"><a href="安全中心/应用协议控制.html">应用协议控制</a></div>
+                    <div class="sub-item"><a href="安全中心/其他控制.html">其他控制</a></div>
+                    <div class="sub-item"><a href="安全中心/行为记录.html">行为记录</a></div>
+                    <div class="sub-item"><a href="安全中心/流量审计.html">流量审计</a></div>
+                    <div class="sub-item"><a href="安全中心/终端名称管理.html">终端名称管理</a></div>
+                    <div class="sub-item"><a href="安全中心/高级设置.html">高级设置</a></div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <h3><a href="认证服务.html">认证服务</a></h3>
+                <div class="sub-menu">
+                    <div class="sub-item"><a href="认证服务/账号在线用户.html">账号在线用户</a></div>
+                    <div class="sub-item"><a href="认证服务/WEB 认证服务.html">WEB 认证服务</a></div>
+                    <div class="sub-item"><a href="认证服务/VPN 服务.html">VPN 服务</a></div>
+                    <div class="sub-item"><a href="认证服务/认证账号管理.html">认证账号管理</a></div>
+                    <div class="sub-item"><a href="认证服务/代拨服务管理.html">代拨服务管理</a></div>
+                    <div class="sub-item"><a href="认证服务/通知推送.html">通知推送</a></div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <h3><a href="高级服务.html">高级服务</a></h3>
+                <div class="sub-menu">
+                    <div class="sub-item"><a href="高级服务/本地服务.html">本地服务</a></div>
+                    <div class="sub-item"><a href="高级服务/内网穿透.html">内网穿透</a></div>
+                    <div class="sub-item"><a href="高级服务/工具包.html">工具包</a></div>
+                    <div class="sub-item"><a href="高级服务/应用市场.html">应用市场</a></div>
+                    <div class="sub-item"><a href="高级服务/Docker.html">Docker</a></div>
+                    <div class="sub-item"><a href="高级服务/虚拟机.html">虚拟机</a></div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <h3><a href="任务管理.html">任务管理</a></h3>
+                <div class="empty-card">当前为说明型占位页，可继续扩展任务调度、执行状态与维护流程相关文档。</div>
+            </div>
+
+            <div class="menu-card">
+                <h3><a href="消息通知.html">消息通知</a></h3>
+                <div class="empty-card">当前为说明型占位页，可继续扩展告警消息、通知记录和提醒处理流程相关文档。</div>
+            </div>
+
+            <div class="menu-card">
+                <h3><a href="日志中心.html">日志中心</a></h3>
+                <div class="sub-menu">
+                    <div class="sub-item"><a href="日志中心/用户日志.html">用户日志</a></div>
+                    <div class="sub-item"><a href="日志中心/功能日志.html">功能日志</a></div>
+                    <div class="sub-item"><a href="日志中心/系统日志.html">系统日志</a></div>
+                    <div class="sub-item"><a href="日志中心/消息通知.html">消息通知</a></div>
+                    <div class="sub-item"><a href="日志中心/告警信息.html">告警信息</a></div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <h3><a href="设备设置.html">设备设置</a></h3>
+                <div class="sub-menu two-column">
+                    <div class="sub-item"><a href="设备设置/基础设置.html">基础设置</a></div>
+                    <div class="sub-item"><a href="设备设置/双机热备.html">双机热备</a></div>
+                    <div class="sub-item"><a href="设备设置/磁盘管理.html">磁盘管理</a></div>
+                    <div class="sub-item"><a href="设备设置/升级备份.html">升级备份</a></div>
+                    <div class="sub-item"><a href="设备设置/重启计划.html">重启计划</a></div>
+                    <div class="sub-item"><a href="设备设置/云服务绑定.html">云服务绑定</a></div>
+                    <div class="sub-item"><a href="设备设置/登录管理.html">登录管理</a></div>
+                    <div class="sub-item"><a href="设备设置/高级管理.html">高级管理</a></div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>生成时间：2026-05-14</p>
+            <p>© 2026 iKuai OSv4 Web管理界面使用指南</p>
+        </footer>
+    </div>
+</body>
+</html>

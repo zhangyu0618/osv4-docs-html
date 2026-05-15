@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>监控中心</title>
+<style>
+  :root { --bg:#fff; --text:#1f2937; --muted:#6b7280; --line:#e5e7eb; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:"Microsoft YaHei","PingFang SC","Noto Sans SC",sans-serif; color:var(--text); background:linear-gradient(180deg,#f8fbff 0%,#eef6ff 52%,#f8fbff 100%); }
+  .wrap { max-width:1100px; margin:0 auto; padding:48px 268px 60px 24px; }
+  h1 { font-size:72px; line-height:1; margin:0 0 28px; color:#0f172a; letter-spacing:2px; }
+  .subtitle { color:var(--muted); font-size:16px; margin-bottom:26px; }
+  .panel { background:#fff; border:1px solid var(--line); border-radius:18px; box-shadow:0 18px 42px rgba(86,136,191,.12); padding:24px; }
+  ul.doc-links { list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px; }
+  .doc-links a { display:block; padding:14px 16px; border:1px solid var(--line); border-radius:12px; text-decoration:none; color:#2563eb; background:#fff; transition:.15s; }
+  .doc-links a:hover { transform:translateY(-1px); box-shadow:0 10px 22px rgba(37,99,235,.12); }
+  .empty { color:var(--muted); font-size:15px; line-height:1.8; padding:8px 2px; }
+  .footer { margin-top:18px; color:var(--muted); font-size:13px; }
+
+  #toc-sidebar { position:fixed; right:0; top:0; bottom:0; width:220px; overflow-y:auto; z-index:9998; font-family:"Segoe UI","Microsoft YaHei",sans-serif; font-size:13px; padding:6px 0; background:#f5f7fa; border-left:1px solid #e8e8e8; }
+  #toc-sidebar ul { list-style:none; margin:0; padding:0; }
+  #toc-sidebar li { margin:0; padding:0; }
+  #toc-sidebar a { display:block; padding:2px 10px 2px 16px; line-height:1.2; color:#333; text-decoration:none; border-left:3px solid transparent; }
+  #toc-sidebar a:hover { color:#1677ff; }
+  #toc-sidebar .l1 > a { font-size:14px; font-weight:700; color:#222; }
+  #toc-sidebar .l2 > a { padding-left:32px; font-size:13px; font-weight:400; color:#555; }
+
+  #back-btn { position:fixed; right:calc(220px + 30px); bottom:30px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:12px 20px; background: linear-gradient(180deg, #5cc8ff 0%, #3b82f6 55%, #2563eb 100%); color:#fff; border:1px solid rgba(255,255,255,0.62); border-radius:999px; font-size:14px; font-weight:600; cursor:pointer; text-decoration:none; box-shadow: 0 14px 28px rgba(59, 130, 246, 0.26), inset 0 1px 0 rgba(255,255,255,0.55), inset 0 -2px 0 rgba(2,132,199,0.20); transition:all .2s; }
+  #back-btn:hover { background: linear-gradient(180deg, #6bd3ff 0%, #4c8df7 55%, #2b6aee 100%); box-shadow: 0 18px 34px rgba(59, 130, 246, 0.30), inset 0 1px 0 rgba(255,255,255,0.62), inset 0 -2px 0 rgba(2,132,199,0.24); transform: translateY(-1px); }
+
+  @media (max-width:1000px) {
+    .wrap { padding:28px 16px 44px; }
+    h1 { font-size:44px; }
+    #toc-sidebar { display:none; }
+    #back-btn { right:15px; bottom:15px; padding:8px 14px; }
+  }
+</style>
+</head>
+<body>
+  <div id="toc-sidebar"><ul>
+    <li class="l1"><a href="系统概览.html">系统概览</a></li>
+    <li class="l2"><a href="系统概览.html">系统概览</a></li>
+    <li class="l1"><a href="监控中心.html">监控中心</a></li>
+    <li class="l2"><a href="监控中心/线路监控.html">线路监控</a></li>
+    <li class="l2"><a href="监控中心/无线监控.html">无线监控</a></li>
+    <li class="l2"><a href="监控中心/终端监控.html">终端监控</a></li>
+    <li class="l2"><a href="监控中心/行为洞察.html">行为洞察</a></li>
+    <li class="l2"><a href="监控中心/策略监控.html">策略监控</a></li>
+    <li class="l2"><a href="监控中心/负载监控.html">负载监控</a></li>
+    <li class="l2"><a href="监控中心/分流监控.html">分流监控</a></li>
+    <li class="l2"><a href="监控中心/下联设备.html">下联设备</a></li>
+    <li class="l1"><a href="网络配置.html">网络配置</a></li>
+    <li class="l2"><a href="网络配置/内外网设置.html">内外网设置</a></li>
+    <li class="l2"><a href="网络配置/VLAN 设置.html">VLAN 设置</a></li>
+    <li class="l2"><a href="网络配置/智能流控.html">智能流控</a></li>
+    <li class="l2"><a href="网络配置/终端限速.html">终端限速</a></li>
+    <li class="l2"><a href="网络配置/分流策略.html">分流策略</a></li>
+    <li class="l2"><a href="网络配置/静态路由.html">静态路由</a></li>
+    <li class="l2"><a href="网络配置/跨三层服务.html">跨三层服务</a></li>
+    <li class="l2"><a href="网络配置/路由对象.html">路由对象</a></li>
+    <li class="l2"><a href="网络配置/自定义协议.html">自定义协议</a></li>
+    <li class="l2"><a href="网络配置/组播管理.html">组播管理</a></li>
+    <li class="l2"><a href="网络配置/DHCP 服务.html">DHCP 服务</a></li>
+    <li class="l2"><a href="网络配置/DNS 服务.html">DNS 服务</a></li>
+    <li class="l2"><a href="网络配置/SD-WAN.html">SD-WAN</a></li>
+    <li class="l2"><a href="网络配置/UPnP_NAT.html">UPnP/NAT</a></li>
+    <li class="l1"><a href="无线服务.html">无线服务</a></li>
+    <li class="l2"><a href="无线服务/AP管理.html">AP管理</a></li>
+    <li class="l2"><a href="无线服务/终端VLAN.html">终端VLAN</a></li>
+    <li class="l2"><a href="无线服务/黑白名单.html">黑白名单</a></li>
+    <li class="l2"><a href="无线服务/无线网优.html">无线网优</a></li>
+    <li class="l1"><a href="安全中心.html">安全中心</a></li>
+    <li class="l2"><a href="安全中心/ACL 规则.html">ACL 规则</a></li>
+    <li class="l2"><a href="安全中心/连接数限制.html">连接数限制</a></li>
+    <li class="l2"><a href="安全中心/云防火墙.html">云防火墙</a></li>
+    <li class="l2"><a href="安全中心/威胁情报库.html">威胁情报库</a></li>
+    <li class="l2"><a href="安全中心/ARP 设置.html">ARP 设置</a></li>
+    <li class="l2"><a href="安全中心/MAC 访问控制.html">MAC 访问控制</a></li>
+    <li class="l2"><a href="安全中心/网址浏览控制.html">网址浏览控制</a></li>
+    <li class="l2"><a href="安全中心/URL 控制.html">URL 控制</a></li>
+    <li class="l2"><a href="安全中心/应用协议控制.html">应用协议控制</a></li>
+    <li class="l2"><a href="安全中心/其他控制.html">其他控制</a></li>
+    <li class="l2"><a href="安全中心/行为记录.html">行为记录</a></li>
+    <li class="l2"><a href="安全中心/流量审计.html">流量审计</a></li>
+    <li class="l2"><a href="安全中心/终端名称管理.html">终端名称管理</a></li>
+    <li class="l2"><a href="安全中心/高级设置.html">高级设置</a></li>
+    <li class="l1"><a href="认证服务.html">认证服务</a></li>
+    <li class="l2"><a href="认证服务/账号在线用户.html">账号在线用户</a></li>
+    <li class="l2"><a href="认证服务/WEB 认证服务.html">WEB 认证服务</a></li>
+    <li class="l2"><a href="认证服务/VPN 服务.html">VPN 服务</a></li>
+    <li class="l2"><a href="认证服务/认证账号管理.html">认证账号管理</a></li>
+    <li class="l2"><a href="认证服务/代拨服务管理.html">代拨服务管理</a></li>
+    <li class="l2"><a href="认证服务/通知推送.html">通知推送</a></li>
+    <li class="l1"><a href="高级服务.html">高级服务</a></li>
+    <li class="l2"><a href="高级服务/本地服务.html">本地服务</a></li>
+    <li class="l2"><a href="高级服务/内网穿透.html">内网穿透</a></li>
+    <li class="l2"><a href="高级服务/工具包.html">工具包</a></li>
+    <li class="l2"><a href="高级服务/应用市场.html">应用市场</a></li>
+    <li class="l2"><a href="高级服务/Docker.html">Docker</a></li>
+    <li class="l2"><a href="高级服务/虚拟机.html">虚拟机</a></li>
+    <li class="l1"><a href="任务管理.html">任务管理</a></li>
+    <li class="l1"><a href="消息通知.html">消息通知</a></li>
+    <li class="l1"><a href="日志中心.html">日志中心</a></li>
+    <li class="l2"><a href="日志中心/用户日志.html">用户日志</a></li>
+    <li class="l2"><a href="日志中心/功能日志.html">功能日志</a></li>
+    <li class="l2"><a href="日志中心/系统日志.html">系统日志</a></li>
+    <li class="l2"><a href="日志中心/消息通知.html">消息通知</a></li>
+    <li class="l2"><a href="日志中心/告警信息.html">告警信息</a></li>
+    <li class="l1"><a href="设备设置.html">设备设置</a></li>
+    <li class="l2"><a href="设备设置/基础设置.html">基础设置</a></li>
+    <li class="l2"><a href="设备设置/双机热备.html">双机热备</a></li>
+    <li class="l2"><a href="设备设置/磁盘管理.html">磁盘管理</a></li>
+    <li class="l2"><a href="设备设置/升级备份.html">升级备份</a></li>
+    <li class="l2"><a href="设备设置/重启计划.html">重启计划</a></li>
+    <li class="l2"><a href="设备设置/云服务绑定.html">云服务绑定</a></li>
+    <li class="l2"><a href="设备设置/登录管理.html">登录管理</a></li>
+    <li class="l2"><a href="设备设置/高级管理.html">高级管理</a></li>
+  </ul></div>
+  <a id="back-btn" href="index.html">← 返回首页</a>
+  <div class="wrap">
+    <h1>监控中心</h1>
+    <div class="subtitle">以下为 D:\05 OS4 文档\OpenClaw\HTML\监控中心 目录下的文档链接。</div>
+    <div class="panel">
+      <ul class="doc-links">
+        <li><a href="监控中心/策略监控.html">策略监控</a></li>
+        <li><a href="监控中心/分流监控.html">分流监控</a></li>
+        <li><a href="监控中心/负载监控.html">负载监控</a></li>
+        <li><a href="监控中心/无线监控.html">无线监控</a></li>
+        <li><a href="监控中心/下联设备.html">下联设备</a></li>
+        <li><a href="监控中心/线路监控.html">线路监控</a></li>
+        <li><a href="监控中心/行为洞察.html">行为洞察</a></li>
+        <li><a href="监控中心/终端监控.html">终端监控</a></li>
+      </ul>
+    </div>
+    <div class="footer">共 8 个链接</div>
+  </div>
+</body>
+</html>
